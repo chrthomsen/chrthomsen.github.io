@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fact Tables &#8212; pygrametl 2.8 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=db3957a7" />
-    <script src="../_static/documentation_options.js?v=4348de45"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <title>Fact Tables &#8212; pygrametl 2.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=b8b80a61" />
+    <script src="../_static/documentation_options.js?v=e7305a5c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bulk Loading" href="bulkloading.html" />
@@ -18,8 +19,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -54,9 +56,9 @@ attributes referencing dimensions (<code class="xref py py-attr docutils literal
 <a class="reference internal" href="../api/tables.html#pygrametl.tables.FactTable" title="pygrametl.tables.FactTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">FactTable</span></code></a> performs an insert in the database whenever the
 <a class="reference internal" href="../api/tables.html#pygrametl.tables.FactTable.insert" title="pygrametl.tables.FactTable.insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FactTable.insert()</span></code></a> method is called, which can very quickly become a
 bottleneck.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">FactTable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">FactTable</span>
 
 <span class="c1"># The actual database connection is handled by a PEP 249 connection</span>
 <span class="n">pgconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;host=&#39;localhost&#39; dbname=&#39;dw&#39; user=&#39;dwuser&#39;</span>
@@ -91,9 +93,9 @@ dimensions. <a class="reference internal" href="../api/tables.html#pygrametl.tab
 <a class="reference internal" href="../api/tables.html#pygrametl.tables.FactTable.insert" title="pygrametl.tables.FactTable.insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FactTable.insert()</span></code></a> by ensuring that a fact does not exist before
 inserting it. An example of each function and the automatic name mapping can be
 seen below, where the fact table from the last example is reused.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">FactTable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">FactTable</span>
 
 <span class="c1"># The actual database connection is handled by a PEP 249 connection</span>
 <span class="n">pgconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;host=&#39;localhost&#39; dbname=&#39;dw&#39; user=&#39;dwuser&#39;</span>
@@ -205,9 +207,9 @@ necessary if the bulkloader runs in another process.</p></li>
 <p>In the following example, a <a class="reference internal" href="../api/tables.html#pygrametl.tables.BulkFactTable" title="pygrametl.tables.BulkFactTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkFactTable</span></code></a> is used to bulk load facts
 into a data warehouse using function <code class="xref py py-func docutils literal notranslate"><span class="pre">pgbulkloader()</span></code>. For information about
 how to bulk loading data into other RDBMSs see <a class="reference internal" href="bulkloading.html#bulkloading"><span class="std std-ref">Bulk Loading</span></a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">BulkFactTable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">BulkFactTable</span>
 
 <span class="n">pgconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;host=&#39;localhost&#39; dbname=&#39;dw&#39; user=&#39;dwuser&#39;</span>
 <span class="s2">                          password=&#39;dwpass&#39;&quot;&quot;&quot;</span><span class="p">)</span>
@@ -221,7 +223,7 @@ how to bulk loading data into other RDBMSs see <a class="reference internal" hre
 
 
 <span class="c1"># This function bulk loads a file into PostgreSQL using psycopg2</span>
-<span class="k">def</span> <span class="nf">pgbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pgbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="c1"># psycopg2 does not accept the default value used to represent NULL</span>
     <span class="c1"># by BulkDimension, which is None. Here this is ignored as we have no</span>
@@ -257,9 +259,9 @@ set as they become available. Like for <a class="reference internal" href="../ap
 <a class="reference internal" href="../api/tables.html#pygrametl.tables.AccumulatingSnapshotFactTable" title="pygrametl.tables.AccumulatingSnapshotFactTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccumulatingSnapshotFactTable</span></code></a> performs an insert in the database
 whenever the <code class="xref py py-meth docutils literal notranslate"><span class="pre">AccumulatingSnapshotFactTable.insert()</span></code> method is called. The
 following example illustrates how to create the class:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">AccumulatingSnapshotFactTable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">AccumulatingSnapshotFactTable</span>
 
 <span class="c1"># The actual database connection is handled by a PEP 249 connection</span>
 <span class="n">pgconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;host=&#39;localhost&#39; dbname=&#39;dw&#39; user=&#39;dwuser&#39;</span>
@@ -273,7 +275,7 @@ following example illustrates how to create the class:</p>
 
 <span class="c1"># A factexpander can be used to modify a row only if it has been updated, note</span>
 <span class="c1"># that we only ignore namemapping for brevity, production code should use it</span>
-<span class="k">def</span> <span class="nf">computelag</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">namemapping</span><span class="p">,</span> <span class="n">updated</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">computelag</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">namemapping</span><span class="p">,</span> <span class="n">updated</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;shipmentdateid&#39;</span> <span class="ow">in</span> <span class="n">updated</span><span class="p">:</span>
         <span class="n">row</span><span class="p">[</span><span class="s1">&#39;shipmentlag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;shipmentdateid&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;paymentdateid&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="s1">&#39;deliverydateid&#39;</span> <span class="ow">in</span> <span class="n">updated</span><span class="p">:</span>
@@ -312,9 +314,9 @@ however, run the <code class="xref py py-func docutils literal notranslate"><spa
 Note that the generated SQL for lookups and updates will use the <code class="xref py py-attr docutils literal notranslate"><span class="pre">keyrefs</span></code>
 in the <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause and an index on them should be considered. An example of
 how to use the class can be seen below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">AccumulatingSnapshotFactTable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">AccumulatingSnapshotFactTable</span>
 
 <span class="c1"># The actual database connection is handled by a PEP 249 connection</span>
 <span class="n">pgconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;host=&#39;localhost&#39; dbname=&#39;dw&#39; user=&#39;dwuser&#39;</span>
@@ -327,7 +329,7 @@ how to use the class can be seen below:</p>
 
 <span class="c1"># A factexpander can be used to modify a row only if it has been updated, note</span>
 <span class="c1"># that we only ignore namemapping for brevity, production code should use it</span>
-<span class="k">def</span> <span class="nf">computelag</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">namemapping</span><span class="p">,</span> <span class="n">updated</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">computelag</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">namemapping</span><span class="p">,</span> <span class="n">updated</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;shipmentdateid&#39;</span> <span class="ow">in</span> <span class="n">updated</span><span class="p">:</span>
         <span class="n">row</span><span class="p">[</span><span class="s1">&#39;shipmentlag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;shipmentdateid&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;paymentdateid&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="s1">&#39;deliverydateid&#39;</span> <span class="ow">in</span> <span class="n">updated</span><span class="p">:</span>
@@ -376,7 +378,7 @@ how to use the class can be seen below:</p>
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">pygrametl</a></h1>
 
@@ -387,7 +389,16 @@ how to use the class can be seen below:</p>
 
 
 
-<h3>Navigation</h3>
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/install.html">Install Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/beginner.html">Beginner Guide</a></li>
@@ -424,16 +435,6 @@ how to use the class can be seen below:</p>
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -447,11 +448,11 @@ how to use the class can be seen below:</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2009 - 2023, Aalborg University.
+      &#169;2009 - 2026, Aalborg University.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
       <a href="../_sources/examples/facttables.rst.txt"

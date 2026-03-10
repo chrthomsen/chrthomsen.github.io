@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Bulk Loading &#8212; pygrametl 2.8 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=db3957a7" />
-    <script src="../_static/documentation_options.js?v=4348de45"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <title>Bulk Loading &#8212; pygrametl 2.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=b8b80a61" />
+    <script src="../_static/documentation_options.js?v=e7305a5c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Parallel" href="parallel.html" />
@@ -18,8 +19,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -69,20 +71,22 @@ depending upon the value of member <code class="xref py py-attr docutils literal
 
 <section id="postgresql">
 <h2>PostgreSQL<a class="headerlink" href="#postgresql" title="Link to this heading">¶</a></h2>
-<p>For PostgreSQL the <a class="reference external" href="http://initd.org/psycopg/docs/cursor.html#cursor.copy_from">copy_from</a> method from
+<p>For PostgreSQL the <a class="reference external" href="https://www.psycopg.org/docs/cursor.html#cursor.copy_expert">copy_expert</a> method from
 psycopg2 can be used:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># psycopg2</span>
-<span class="k">def</span> <span class="nf">pgbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pgbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">connection</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-    <span class="n">cursor</span><span class="o">.</span><span class="n">copy_from</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filehandle</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">fieldsep</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="n">nullval</span><span class="p">,</span>
-                         <span class="n">columns</span><span class="o">=</span><span class="n">attributes</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">copy_expert</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;COPY </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">attributes</span><span class="p">)</span><span class="si">}</span><span class="s2">) FROM STDIN WITH (FORMAT csv, DELIMITER &#39;</span><span class="si">{</span><span class="n">fieldsep</span><span class="si">}</span><span class="s2">&#39;, NULL &#39;</span><span class="si">{</span><span class="n">nullval</span><span class="si">}</span><span class="s2">&#39;);&quot;</span><span class="p">,</span>
+            <span class="n">filehandle</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 <p>If Jython is used the <a class="reference external" href="https://jdbc.postgresql.org/documentation/publicapi/org/postgresql/copy/CopyManager.html#copyIn-java.lang.String-">copyIn</a>
 method in JDBC’s <code class="xref py py-class docutils literal notranslate"><span class="pre">CopyManager</span></code> class can be used:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># JDBC</span>
-<span class="k">def</span> <span class="nf">pgcopybulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pgcopybulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">pgconnection</span>
     <span class="n">copymgr</span> <span class="o">=</span> <span class="n">pgconnection</span><span class="o">.</span><span class="n">getCopyAPI</span><span class="p">()</span>
     <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;COPY </span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">) FROM STDIN WITH DELIMITER &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> \
@@ -96,7 +100,7 @@ method in JDBC’s <code class="xref py py-class docutils literal notranslate"><
 <p>For MySQL the <a class="reference external" href="http://dev.mysql.com/doc/refman/5.7/en/load-data.html">LOAD DATA INFILE</a> functionality
 provided by MySQL SQL dialect can be used.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># MySQLdb</span>
-<span class="k">def</span> <span class="nf">mysqlbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mysqlbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">connection</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;LOAD DATA LOCAL INFILE &#39;</span><span class="si">%s</span><span class="s2">&#39; INTO TABLE </span><span class="si">%s</span><span class="s2"> FIELDS TERMINATED BY &#39;</span><span class="si">%s</span><span class="s2">&#39; LINES TERMINATED BY &#39;</span><span class="si">%s</span><span class="s2">&#39; (</span><span class="si">%s</span><span class="s2">);&quot;</span> <span class="o">%</span> \
@@ -125,7 +129,7 @@ created with the suffix .dat and passed to any bulk loading table as
 suffix using the functions arguments. The SQL Loader is then executed (sqlldr
 must in the system path) and passed the constructed .ctl file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># cx_Oracle or JDBC</span>
-<span class="k">def</span> <span class="nf">oraclebulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">oraclebulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
 
     <span class="c1"># The configuration file used by SQL Loader must use the suffix .ctf</span>
     <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.ctl&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ctl_handle</span><span class="p">:</span>
@@ -167,7 +171,7 @@ must match the table you are inserting into. This can be overcome by adding a
 this case, we create a <a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms191479.aspx">non-XML format file</a>.</p>
 <p>A simple example of bulk loading in SQL Server along with the creation of a
 format file can be seen below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sqlserverbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sqlserverbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">msconn</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">msconn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
@@ -202,7 +206,7 @@ format file can be seen below:</p>
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">pygrametl</a></h1>
 
@@ -213,7 +217,16 @@ format file can be seen below:</p>
 
 
 
-<h3>Navigation</h3>
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/install.html">Install Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/beginner.html">Beginner Guide</a></li>
@@ -250,16 +263,6 @@ format file can be seen below:</p>
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -273,11 +276,11 @@ format file can be seen below:</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2009 - 2023, Aalborg University.
+      &#169;2009 - 2026, Aalborg University.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
       <a href="../_sources/examples/bulkloading.rst.txt"

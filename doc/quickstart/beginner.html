@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Beginner Guide &#8212; pygrametl 2.8 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=db3957a7" />
-    <script src="../_static/documentation_options.js?v=4348de45"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <title>Beginner Guide &#8212; pygrametl 2.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=b8b80a61" />
+    <script src="../_static/documentation_options.js?v=e7305a5c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Database" href="../examples/database.html" />
@@ -18,8 +19,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -57,7 +59,8 @@ instantiating classes as this improves readability and prevents errors in
 the future if the API changes.</p>
 </div>
 <figure class="align-center" id="id1">
-<span id="dwexample"></span><img alt="bookstore data warehouse example" src="../_images/example.svg" /><figcaption>
+<span id="dwexample"></span><img alt="bookstore data warehouse example" src="../_images/example.svg" />
+<figcaption>
 <p><span class="caption-text">Data Warehouse example</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
@@ -120,26 +123,26 @@ in this beginner guide. The psycopg2 and sqlite3 database drivers must be
 imported so a connection to PostgreSQL and SQLite can be established. The main
 pygrametl module is also imported so a <a class="reference internal" href="../api/pygrametl.html#pygrametl.ConnectionWrapper" title="pygrametl.ConnectionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionWrapper</span></code></a> can be
 created. pyggrametl’s <a class="reference internal" href="../api/datasources.html#module-pygrametl.datasources" title="pygrametl.datasources"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datasources</span></code></a> module is imported so the sales
-records (<a class="reference internal" href="../api/datasources.html#pygrametl.datasources.SQLSource" title="pygrametl.datasources.SQLSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">SQLSource</span></code></a>) and CSV file (<code class="xref py py-class docutils literal notranslate"><span class="pre">CSVSource</span></code>) can be read.
+records (<a class="reference internal" href="../api/datasources.html#pygrametl.datasources.SQLSource" title="pygrametl.datasources.SQLSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">SQLSource</span></code></a>) and CSV file (<a class="reference internal" href="../api/datasources.html#pygrametl.datasources.CSVSource" title="pygrametl.datasources.CSVSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSVSource</span></code></a>) can be read.
 Finally, classes for interacting with the fact table (<a class="reference internal" href="../api/tables.html#pygrametl.tables.FactTable" title="pygrametl.tables.FactTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">FactTable</span></code></a>) and
 the various dimensions (<a class="reference internal" href="../api/tables.html#pygrametl.tables.CachedDimension" title="pygrametl.tables.CachedDimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedDimension</span></code></a>) are imported from
 <a class="reference internal" href="../api/tables.html#module-pygrametl.tables" title="pygrametl.tables"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tables</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># psycopg2 is a database driver allowing CPython to access PostgreSQL</span>
-<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
 
 <span class="c1"># sqlite3 is a database driver allowing CPython to access SQLite</span>
-<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
 
 <span class="c1"># pygrametl&#39;s __init__ file provides a set of helper functions and more</span>
 <span class="c1"># importantly the class ConnectionWrapper for wrapping PEP 249 connections</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
 
 <span class="c1"># pygrametl makes it simple to read external data through datasources</span>
-<span class="kn">from</span> <span class="nn">pygrametl.datasources</span> <span class="kn">import</span> <span class="n">SQLSource</span><span class="p">,</span> <span class="n">CSVSource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.datasources</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLSource</span><span class="p">,</span> <span class="n">CSVSource</span>
 
 <span class="c1"># Interacting with the dimensions and the fact table is done through a set</span>
 <span class="c1"># of classes. A suitable object must be created for each table</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">FactTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">FactTable</span>
 </pre></div>
 </div>
 <p>Then a connection to the database containing the sales records and the data
@@ -149,7 +152,7 @@ instance of <a class="reference internal" href="../api/pygrametl.html#pygrametl.
 of this class is set as the default connection for pygrametl’s abstractions.
 This allows pygrametl to be used without having to pass a connection to each
 abstraction that needs it. A <a class="reference internal" href="../api/pygrametl.html#pygrametl.ConnectionWrapper" title="pygrametl.ConnectionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionWrapper</span></code></a> is not needed for the
-connection to the sales database as it is only used by the <code class="xref py py-class docutils literal notranslate"><span class="pre">CSVSource</span></code>,
+connection to the sales database as it is only used by the <a class="reference internal" href="../api/datasources.html#pygrametl.datasources.CSVSource" title="pygrametl.datasources.CSVSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">CSVSource</span></code></a>,
 so in that case, the <span class="target" id="index-3"></span><a class="pep reference external" href="https://peps.python.org/pep-0249/"><strong>PEP 249</strong></a> connection is used directly. For more
 information about database connections in pygrametl see <a class="reference internal" href="../examples/database.html#database"><span class="std std-ref">Database</span></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creates a PEP 249 connection to the sales database. PARSE_DECLTYPES makes</span>
@@ -248,7 +251,7 @@ implemented using standard Python without any syntactic additions or
 restrictions. This also means that Python’s many packages can be used as part
 of an ETL flow.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A normal Python function is used to split the date into its parts</span>
-<span class="k">def</span> <span class="nf">split_date</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">split_date</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Splits a date represented by a datetime into its three parts&quot;&quot;&quot;</span>
 
     <span class="c1"># First the datetime object is extracted from the row dictionary</span>
@@ -345,11 +348,11 @@ more information. The simple parallel capabilities of pygrametl can also be
 used to further increase the throughput of an ETL flow (see <a class="reference internal" href="../examples/parallel.html#parallel"><span class="std std-ref">Parallel</span></a>),
 and the correctness of an ETL flow should also be checked using a set of
 automated repeatable tests (see <a class="reference internal" href="../examples/testing.html#testing"><span class="std std-ref">Drawn Table Testing</span></a>).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">sqlite3</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.datasources</span> <span class="kn">import</span> <span class="n">SQLSource</span><span class="p">,</span> <span class="n">CSVSource</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">FactTable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.datasources</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLSource</span><span class="p">,</span> <span class="n">CSVSource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">FactTable</span>
 
 <span class="c1"># Opening of connections and creation of a ConnectionWrapper</span>
 <span class="n">sale_conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;sale.sqlite&quot;</span><span class="p">,</span>
@@ -392,7 +395,7 @@ automated repeatable tests (see <a class="reference internal" href="../examples/
         <span class="n">measures</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sale&#39;</span><span class="p">])</span>
 
 <span class="c1"># Python function needed to split the date into its three parts</span>
-<span class="k">def</span> <span class="nf">split_date</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">split_date</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Splits a date represented by a datetime into its three parts&quot;&quot;&quot;</span>
 
     <span class="c1"># Splitting of the date into parts</span>
@@ -442,7 +445,7 @@ automated repeatable tests (see <a class="reference internal" href="../examples/
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">pygrametl</a></h1>
 
@@ -453,7 +456,16 @@ automated repeatable tests (see <a class="reference internal" href="../examples/
 
 
 
-<h3>Navigation</h3>
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Beginner Guide</a></li>
@@ -490,16 +502,6 @@ automated repeatable tests (see <a class="reference internal" href="../examples/
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -513,11 +515,11 @@ automated repeatable tests (see <a class="reference internal" href="../examples/
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2009 - 2023, Aalborg University.
+      &#169;2009 - 2026, Aalborg University.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
       <a href="../_sources/quickstart/beginner.rst.txt"

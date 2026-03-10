@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Dimensions &#8212; pygrametl 2.8 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=db3957a7" />
-    <script src="../_static/documentation_options.js?v=4348de45"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <title>Dimensions &#8212; pygrametl 2.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=b8b80a61" />
+    <script src="../_static/documentation_options.js?v=e7305a5c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Fact Tables" href="facttables.html" />
@@ -18,8 +19,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -60,9 +62,9 @@ the non-key columns in the table. In addition to these required parameters, a
 subset of columns to be used for looking up keys can also be specified, as well
 as a function for computing the primary key, a default return value if a lookup
 fails, and a function for expanding a row automatically.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">Dimension</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dimension</span>
 
 <span class="c1"># Input is a list of rows which in pygrametl is modeled as dicts</span>
 <span class="n">products</span> <span class="o">=</span> <span class="p">[</span>
@@ -124,10 +126,10 @@ parameter <code class="xref py py-attr docutils literal notranslate"><span class
 cached. To ensure that the cache is kept consistent, the RDBMS is not allowed
 to modify the rows in any way, a default value set by the RDBMS is an example of
 a simple-to-miss violation of this.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.datasources</span> <span class="kn">import</span> <span class="n">CSVSource</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">FactTable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.datasources</span><span class="w"> </span><span class="kn">import</span> <span class="n">CSVSource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">FactTable</span>
 
 <span class="c1"># The actual database connection is handled by a PEP 249 connection</span>
 <span class="n">pgconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;host=&#39;localhost&#39; dbname=&#39;dw&#39; user=&#39;dwuser&#39;</span>
@@ -228,11 +230,11 @@ necessary if the bulkloader runs in another process.</p></li>
 </ul>
 </dd></dl>
 
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
-<span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.datasources</span> <span class="kn">import</span> <span class="n">SQLSource</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">BulkDimension</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.datasources</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLSource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">BulkDimension</span>
 
 <span class="c1"># The actual database connection is handled by a PEP 249 connection</span>
 <span class="n">pgconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;host=&#39;localhost&#39; dbname=&#39;dw&#39; user=&#39;dwuser&#39;</span>
@@ -245,7 +247,7 @@ necessary if the bulkloader runs in another process.</p></li>
 
 
 <span class="c1"># This function bulk loads a file into PostgreSQL using psycopg2</span>
-<span class="k">def</span> <span class="nf">pgbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pgbulkloader</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">fieldsep</span><span class="p">,</span> <span class="n">rowsep</span><span class="p">,</span> <span class="n">nullval</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">):</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="c1"># psycopg2 does not accept the default value used to represent NULL</span>
     <span class="c1"># bv BulkDimension, which is None. Here this is ignored as we have no</span>
@@ -352,9 +354,9 @@ error will be raised if they are not. As caching is used to increase to speedup
 lookups, it is assumed that the database does not change or add any attribute
 values to the rows. For example, a default value set by RDBMS and automatic type
 coercion can break this assumption.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">TypeOneSlowlyChangingDimension</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeOneSlowlyChangingDimension</span>
 
 <span class="c1"># Input is a list of rows which in pygrametl is modeled as dicts</span>
 <span class="n">products</span> <span class="o">=</span> <span class="p">[</span>
@@ -427,9 +429,9 @@ of a member that was valid at given time by using
 <a class="reference internal" href="../api/tables.html#pygrametl.tables.SlowlyChangingDimension.lookupasof" title="pygrametl.tables.SlowlyChangingDimension.lookupasof"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SlowlyChangingDimension.lookupasof()</span></code></a>. This method, however, requires
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">toatt</span></code> and/or <code class="xref py py-attr docutils literal notranslate"><span class="pre">fromatt</span></code> to be given when the
 <a class="reference internal" href="../api/tables.html#pygrametl.tables.SlowlyChangingDimension" title="pygrametl.tables.SlowlyChangingDimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">SlowlyChangingDimension</span></code></a> is created.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">SlowlyChangingDimension</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">SlowlyChangingDimension</span>
 
 <span class="c1"># Input is a list of rows which in pygrametl is modeled as dicts</span>
 <span class="n">products</span> <span class="o">=</span> <span class="p">[</span>
@@ -542,9 +544,9 @@ instance of <a class="reference internal" href="../api/tables.html#pygrametl.tab
 dimension. Currently, only the root dimension can be an instance of
 <a class="reference internal" href="../api/tables.html#pygrametl.tables.SlowlyChangingDimension" title="pygrametl.tables.SlowlyChangingDimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">SlowlyChangingDimension</span></code></a> and the feature should be considered
 experimental.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">SnowflakedDimension</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">SnowflakedDimension</span>
 
 <span class="c1"># Input is a list of rows which in pygrametl is modeled as dicts</span>
 <span class="n">products</span> <span class="o">=</span> <span class="p">[</span>
@@ -630,9 +632,9 @@ provided by the other dimension classes in pygrametl. However, some of
 <a class="reference internal" href="../api/tables.html#pygrametl.tables.SnowflakedDimension" title="pygrametl.tables.SnowflakedDimension"><code class="xref py py-class docutils literal notranslate"><span class="pre">SnowflakedDimension</span></code></a> methods modify the provided rows as foreign key
 relationship needs to be computed based on the contents of the rows the object
 operates on.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
-<span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">SnowflakedDimension</span><span class="p">,</span> \
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">CachedDimension</span><span class="p">,</span> <span class="n">SnowflakedDimension</span><span class="p">,</span> \
     <span class="n">SlowlyChangingDimension</span>
 
 <span class="c1"># Input is a list of rows which in pygrametl is modeled as dicts</span>
@@ -711,7 +713,7 @@ updated correctly.</p>
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">pygrametl</a></h1>
 
@@ -722,7 +724,16 @@ updated correctly.</p>
 
 
 
-<h3>Navigation</h3>
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/install.html">Install Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/beginner.html">Beginner Guide</a></li>
@@ -759,16 +770,6 @@ updated correctly.</p>
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -782,11 +783,11 @@ updated correctly.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2009 - 2023, Aalborg University.
+      &#169;2009 - 2026, Aalborg University.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
       <a href="../_sources/examples/dimensions.rst.txt"

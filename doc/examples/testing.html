@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Drawn Table Testing &#8212; pygrametl 2.8 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=db3957a7" />
-    <script src="../_static/documentation_options.js?v=4348de45"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <title>Drawn Table Testing &#8212; pygrametl 2.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=b8b80a61" />
+    <script src="../_static/documentation_options.js?v=e7305a5c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pygrametl" href="../api/pygrametl.html" />
@@ -18,8 +19,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -64,7 +66,7 @@ as in the header and must be separated by pipes. For string values, any
 surrounding spaces are trimmed away. A Drawn Table is also a valid table in
 <a class="reference external" href="https://github.github.com/gfm/#tables-extension-">GitHub Flavored Markdown</a>.
 An example is given below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygrametl.drawntabletesting</span> <span class="k">as</span> <span class="nn">dtt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl.drawntabletesting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dtt</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">dtt</span><span class="o">.</span><span class="n">connectionwrapper</span><span class="p">()</span>
 
@@ -105,7 +107,7 @@ other constraints and require that users specify <code class="docutils literal n
 column. An example using foreign keys to connect <code class="docutils literal notranslate"><span class="pre">book</span></code> and <code class="docutils literal notranslate"><span class="pre">genre</span></code> can be
 seen below. All foreign key constraints are enforced by the RDMBS managing the
 test database.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygrametl.drawntabletesting</span> <span class="k">as</span> <span class="nn">dtt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl.drawntabletesting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dtt</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">dtt</span><span class="o">.</span><span class="n">connectionwrapper</span><span class="p">()</span>
 
@@ -149,7 +151,7 @@ create a new instance with the postcondition based on it.  After a number of
 additions and/or updates, it can be useful to get all modified rows. This is
 done using the method <a class="reference internal" href="../api/drawntabletesting.html#pygrametl.drawntabletesting.Table.additions" title="pygrametl.drawntabletesting.Table.additions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">additions()</span></code></a>. For example, a test case where the
 ETL flow is executed for the new rows is shown below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_canInsertIntoBookDimensionTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_canInsertIntoBookDimensionTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">expected</span> <span class="o">=</span> <span class="n">table</span> <span class="o">+</span> <span class="s2">&quot;| 6 | Metro 2033 | 2 |&quot;</span> \
                      <span class="o">+</span> <span class="s2">&quot;| 7 | Metro 2034 | 2 |&quot;</span>
     <span class="n">newrows</span> <span class="o">=</span> <span class="n">expected</span><span class="o">.</span><span class="n">additions</span><span class="p">()</span>
@@ -247,7 +249,7 @@ constructor. DTT checks if the cells with the same variable contain
 the same values in the database and fails the test if not. The code snippet below
 shows an example of how to use variables to test that foreign keys are assigned
 correctly.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygrametl.drawntabletesting</span> <span class="k">as</span> <span class="nn">dtt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl.drawntabletesting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dtt</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">dtt</span><span class="o">.</span><span class="n">connectionwrapper</span><span class="p">()</span>
 
@@ -290,7 +292,7 @@ in the comparison. This is done with the special variable <code class="docutils 
 to any value, <code class="docutils literal notranslate"><span class="pre">$_</span></code> is always considered to be equal. In the example below,
 the actual values of the primary key column are not taken into consideration.
 <code class="docutils literal notranslate"><span class="pre">$_!</span></code> is a stricter version of <code class="docutils literal notranslate"><span class="pre">$_</span></code> which disallows <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygrametl.drawntabletesting</span> <span class="k">as</span> <span class="nn">dtt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl.drawntabletesting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dtt</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">dtt</span><span class="o">.</span><span class="n">connectionwrapper</span><span class="p">()</span>
 
@@ -377,13 +379,13 @@ Drawn Table defining the precondition. A class using DTT to test the ETL flow fo
 <code class="docutils literal notranslate"><span class="pre">book</span></code> dimension is defined on Line 1. It inherits from <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.TestCase</span></code>
 as required by <code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code>. Three methods are then overridden <code class="xref py py-meth docutils literal notranslate"><span class="pre">setUpClass()</span></code>,
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">setUp()</span></code>, and <code class="xref py py-meth docutils literal notranslate"><span class="pre">tearDown()</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
-<span class="kn">import</span> <span class="nn">pygrametl.drawntabletesting</span> <span class="k">as</span> <span class="nn">dtt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl.drawntabletesting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dtt</span>
 
 
-<span class="k">class</span> <span class="nc">BookStateTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BookStateTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">cw</span> <span class="o">=</span> <span class="n">dtt</span><span class="o">.</span><span class="n">connectionwrapper</span><span class="p">()</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">initial</span> <span class="o">=</span> <span class="n">dtt</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        | bid:int (pk) | title:text            | genre:text |</span>
@@ -393,19 +395,19 @@ as required by <code class="xref py py-mod docutils literal notranslate"><span c
 <span class="s2">        | 3            | Calvin and Hobbes One | Comic      |</span>
 <span class="s2">        | 4            | The Silver Spoon      | Cookbook   |&quot;&quot;&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">ensure</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">dtt</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">test_insertNew</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_insertNew</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">expected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial</span> <span class="o">+</span> <span class="s2">&quot;| 5 | Calvin and Hobbes Two | Comic |&quot;</span>
         <span class="n">newrows</span> <span class="o">=</span> <span class="n">expected</span><span class="o">.</span><span class="n">additions</span><span class="p">()</span>
         <span class="n">etl</span><span class="o">.</span><span class="n">executeETLFlow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cw</span><span class="p">,</span> <span class="n">newrows</span><span class="p">)</span>
         <span class="n">expected</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">test_insertExisting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_insertExisting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">row</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bid&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;book&#39;</span><span class="p">:</span> <span class="s1">&#39;Calvin and Hobbes One&#39;</span><span class="p">,</span> <span class="s1">&#39;genre&#39;</span><span class="p">:</span> <span class="s1">&#39;Comic&#39;</span><span class="p">}</span>
         <span class="n">etl</span><span class="o">.</span><span class="n">executeETLFlow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cw</span><span class="p">,</span> <span class="p">[</span><span class="n">row</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">()</span>
@@ -527,7 +529,7 @@ member.</p>
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">pygrametl</a></h1>
 
@@ -538,7 +540,16 @@ member.</p>
 
 
 
-<h3>Navigation</h3>
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/install.html">Install Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/beginner.html">Beginner Guide</a></li>
@@ -575,16 +586,6 @@ member.</p>
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -598,11 +599,11 @@ member.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2009 - 2023, Aalborg University.
+      &#169;2009 - 2026, Aalborg University.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
       <a href="../_sources/examples/testing.rst.txt"

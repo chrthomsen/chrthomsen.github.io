@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Install Guide &#8212; pygrametl 2.8 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=db3957a7" />
-    <script src="../_static/documentation_options.js?v=4348de45"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <title>Install Guide &#8212; pygrametl 2.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=b8b80a61" />
+    <script src="../_static/documentation_options.js?v=e7305a5c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Beginner Guide" href="beginner.html" />
@@ -18,8 +19,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -35,9 +37,9 @@
 <span id="install"></span><h1>Install Guide<a class="headerlink" href="#install-guide" title="Link to this heading">¶</a></h1>
 <p>Installing pygrametl is fairly simple, mainly due to the package having no
 mandatory dependencies. This guide contains all the information needed to
-install and use the package with CPython. pygrametl also supports the JVM-based
-Python implementation Jython. For more information about using pygrametl with
-Jython see <a class="reference internal" href="../examples/jython.html#jython"><span class="std std-ref">Jython</span></a>.</p>
+install and use the package with CPython. pygrametl also partially supports
+the JVM-based Python implementation Jython. For more information about using
+pygrametl with Jython see <a class="reference internal" href="../examples/jython.html#jython"><span class="std std-ref">Jython</span></a>.</p>
 <section id="installing-a-python-implementation">
 <h2>Installing a Python Implementation<a class="headerlink" href="#installing-a-python-implementation" title="Link to this heading">¶</a></h2>
 <p>pygrametl requires an implementation of the Python programming language to run.
@@ -141,7 +143,7 @@ interactive mode from the command line and run the command <code class="docutils
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.9.2</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Feb</span> <span class="mi">20</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">18</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">11</span><span class="p">)</span>
 <span class="p">[</span><span class="n">GCC</span> <span class="mf">10.2.0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
 <span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pygrametl</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
 <span class="o">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
@@ -156,11 +158,11 @@ of pygrametl to <code class="xref py py-attr docutils literal notranslate"><span
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The path to the pygrametl package is added to the path used by the Python</span>
 <span class="c1"># interpreter when modules are being imported, this must be done in all</span>
 <span class="c1"># program using a module not included in the default Python path</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/path/to/pygrametl&#39;</span><span class="p">)</span>
 
 <span class="c1"># After the folder is added to Python&#39;s path can pygrametl be imported</span>
-<span class="kn">import</span> <span class="nn">pygrametl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pygrametl</span>
 </pre></div>
 </div>
 </section>
@@ -171,7 +173,7 @@ of pygrametl to <code class="xref py py-attr docutils literal notranslate"><span
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">pygrametl</a></h1>
 
@@ -182,7 +184,16 @@ of pygrametl to <code class="xref py py-attr docutils literal notranslate"><span
 
 
 
-<h3>Navigation</h3>
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Install Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="beginner.html">Beginner Guide</a></li>
@@ -219,16 +230,6 @@ of pygrametl to <code class="xref py py-attr docutils literal notranslate"><span
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -242,11 +243,11 @@ of pygrametl to <code class="xref py py-attr docutils literal notranslate"><span
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2009 - 2023, Aalborg University.
+      &#169;2009 - 2026, Aalborg University.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
       <a href="../_sources/quickstart/install.rst.txt"

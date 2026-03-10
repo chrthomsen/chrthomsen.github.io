@@ -5,12 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Jython &#8212; pygrametl 2.8 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=db3957a7" />
-    <script src="../_static/documentation_options.js?v=4348de45"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <title>Jython &#8212; pygrametl 2.9 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=b8b80a61" />
+    <script src="../_static/documentation_options.js?v=e7305a5c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Drawn Table Testing" href="testing.html" />
@@ -18,8 +19,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -33,12 +35,20 @@
             
   <section id="jython">
 <span id="id1"></span><h1>Jython<a class="headerlink" href="#jython" title="Link to this heading">¶</a></h1>
-<p>pygrametl supports running ETL flows on Jython, an implementation of Python that
-run on the JVM. Using Jython instead of CPython allows an ETL flow to be
-parallelized using multiple threads instead of multiple processes. This is
-because Jython does not have a global interpreter lock, which in CPython ensures
-that only a single thread is running per process at a given time. For more
+<p>pygrametl partially supports running ETL flows on Jython, an implementation
+of Python that runs on the JVM. Using Jython instead of CPython allows an ETL
+flow to be parallelized using multiple threads instead of multiple processes.
+This is because Jython does not have a global interpreter lock, which in CPython
+ensures that only a single thread is running per process at a given time. For more
 information about the GIL see the Python wiki <a class="reference external" href="https://wiki.python.org/moin/GlobalInterpreterLock">GIL</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As Python 2 is no longer being <a class="reference external" href="https://www.python.org/doc/sunset-python-2/">maintained</a> and
+<a class="reference external" href="https://github.com/jython/jython/tree/main">Jython 3</a> has not yet been
+released, support for Jython will be reduced as we continue to develop
+pygrametl and phase out support for Python 2. Currently,
+<a class="reference internal" href="../api/drawntabletesting.html#module-pygrametl.drawntabletesting" title="pygrametl.drawntabletesting"><code class="xref py py-mod docutils literal notranslate"><span class="pre">drawntabletesting</span></code></a> is not supported in Jython.</p>
+</div>
 <p>To make switching between CPython and Jython as simple as possible, two
 abstractions are provided by pygrametl. Firstly, <a class="reference internal" href="../api/jdbcconnectionwrapper.html#module-pygrametl.JDBCConnectionWrapper" title="pygrametl.JDBCConnectionWrapper"><code class="xref py py-mod docutils literal notranslate"><span class="pre">JDBCConnectionWrapper</span></code></a>
 provides two connection wrappers for <a class="reference external" href="https://jcp.org/en/jsr/detail?id=221">JDBC</a> connections with the same interface as
@@ -97,11 +107,11 @@ libraries implemented in other JVM-based languages like Java, Scala, Clojure,
 and Kotlin. To use such libraries, they must be added to the JVM classpath by
 using the <code class="docutils literal notranslate"><span class="pre">-J-cp</span></code> command-line option. For more information about Jython’s
 command-line flags run the command <code class="docutils literal notranslate"><span class="pre">jython</span> <span class="pre">-h</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygrametl.tables</span> <span class="kn">import</span> <span class="n">FactTable</span>
-<span class="kn">from</span> <span class="nn">pygrametl.JDBCConnectionWrapper</span> <span class="kn">import</span> <span class="n">JDBCConnectionWrapper</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.tables</span><span class="w"> </span><span class="kn">import</span> <span class="n">FactTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pygrametl.JDBCConnectionWrapper</span><span class="w"> </span><span class="kn">import</span> <span class="n">JDBCConnectionWrapper</span>
 
 <span class="c1"># The Java classes used must be explicitly imported into the program</span>
-<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.DriverManager</span>
 
 <span class="c1"># The actual database connection is handled by a JDBC connection</span>
 <span class="n">jconn</span> <span class="o">=</span> <span class="n">java</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">DriverManager</span><span class="o">.</span><span class="n">getConnection</span><span class="p">(</span>
@@ -139,7 +149,7 @@ parallel module <a class="reference internal" href="../api/parallel.html#module-
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">pygrametl</a></h1>
 
@@ -150,7 +160,16 @@ parallel module <a class="reference internal" href="../api/parallel.html#module-
 
 
 
-<h3>Navigation</h3>
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/install.html">Install Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/beginner.html">Beginner Guide</a></li>
@@ -187,16 +206,6 @@ parallel module <a class="reference internal" href="../api/parallel.html#module-
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -210,11 +219,11 @@ parallel module <a class="reference internal" href="../api/parallel.html#module-
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2009 - 2023, Aalborg University.
+      &#169;2009 - 2026, Aalborg University.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
       <a href="../_sources/examples/jython.rst.txt"

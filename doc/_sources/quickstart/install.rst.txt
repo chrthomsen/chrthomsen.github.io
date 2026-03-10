@@ -4,9 +4,9 @@ Install Guide
 =============
 Installing pygrametl is fairly simple, mainly due to the package having no
 mandatory dependencies. This guide contains all the information needed to
-install and use the package with CPython. pygrametl also supports the JVM-based
-Python implementation Jython. For more information about using pygrametl with
-Jython see :ref:`jython`.
+install and use the package with CPython. pygrametl also partially supports
+the JVM-based Python implementation Jython. For more information about using
+pygrametl with Jython see :ref:`jython`.
 
 Installing a Python Implementation
 ----------------------------------
